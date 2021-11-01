@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class SettingsController extends Controller
 {
     // public function __construct()
     // {
     //     $this->middleware('auth');
     // }
 
-    public function index()
+    public function form()
     {
-        return view('home');
+
+        return view('admin.settings.form');
     }
 }

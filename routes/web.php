@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard.dashboard'); 
+    })->name('dashboard');
+    Route::get('/settings/form', [App\Http\Controllers\SettingsController::class, 'form'])->name('settings.form');
+});
