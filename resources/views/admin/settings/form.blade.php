@@ -46,7 +46,8 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- general form start -->
-                                    <form id="general_setting">
+                                    <form id="general_setting" action="{{ route('settings.store') }}">
+                                        @csrf
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="application_name">Application name</label>
@@ -56,6 +57,7 @@
                                                 <label for="application_logo">Application logo</label>
                                                 <input type="file" name="application_logo" class="form-control" id="application_logo" title="Application logo" placeholder="Application logo">
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label for="default_image">Default image</label>
                                                 <input type="file" name="default_image" class="form-control" id="default_image" title="Default image" placeholder="Default image">
@@ -78,35 +80,77 @@
                                         <h3 class="card-title">Email Settings</h3>
                                     </div>
                                     <!-- /.card-header -->
-                                    <!-- general form start -->
-                                    <form id="general_setting">
+                                    <!-- Email Settings form start -->
+                                    <form id="email_setting" {{ route('settings.store') }}>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="application_name">Application name</label>
-                                                <input type="text" name="application_name" class="form-control" id="application_name" placeholder="Application name">
+                                                <label for="from_email">From email</label>
+                                                <input type="email" name="from_email" class="form-control" id="from_email" placeholder="admin@2021gmail.com">
                                             </div>
                                             <div class="form-group">
-                                                <label for="application_logo">Application logo</label>
-                                                <input type="file" name="application_logo" class="form-control" id="application_logo" title="Application logo" placeholder="Application logo">
+                                                <label for="dev_email">Dev email</label>
+                                                <input type="email" name="dev_email" class="form-control" id="dev_email" placeholder="admin@2021gmail.com">
                                             </div>
                                             <div class="form-group">
-                                                <label for="default_image">Default image</label>
-                                                <input type="file" name="default_image" class="form-control" id="default_image" title="Default image" placeholder="Default image">
+                                                <label for="smtp_server">SMTP server</label>
+                                                <input type="text" name="smtp_server" class="form-control" id="smtp_server" placeholder="SMTP server">
                                             </div>
                                             <div class="form-group">
-                                                <label for="date_format">Date format</label>
-                                                <input type="text" name="date_format" class="form-control" id="date_format" placeholder="Y-m-d">
+                                                <label for="smtp_user">SMTP user</label>
+                                                <input type="email" name="smtp_user" class="form-control" id="smtp_user" placeholder="admin@2021gmail.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="smtp_password">SMTP Password</label>
+                                                <input type="text" name="smtp_password" class="form-control" id="smtp_password" placeholder="SMTP password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Port">Port</label>
+                                                <input type="text" name="port" class="form-control" id="port" placeholder="Port">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="from_name">From name</label>
+                                                <input type="text" name="from_name" class="form-control" id="from_name" placeholder="From name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="smtp_encrypyion">SMTP Encrypyion</label>
+                                                <input type="text" name="smtp_encrypyion" class="form-control" id="encrypyion" placeholder="SMTP encrypyion">
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="button" onclick="formSubmit('general_setting')" class="btn btn-primary">Submit</button>
+                                            <button type="button" onclick="formSubmit('email_setting')" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-social" role="tabpanel" aria-labelledby="vert-tabs-social-tab">
-                                social
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Social Settings</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <!-- Email Settings form start -->
+                                    <form id="social_form" action="{{ route('settings.store') }}">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="facebook_api_key">Facebook API key</label>
+                                                <input type="text" name="facebook_api_key" class="form-control" id="facebook_api_key" placeholder="Facebook api key">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facebook_api_secret">Facebook API Secret</label>
+                                                <input type="text" name="facebook_api_secret" class="form-control" id="facebook_api_secret" placeholder="Facebook api Secret">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="google_api_secret">Google API Secret</label>
+                                                <input type="text" name="google_api_secret" class="form-control" id="google_api_secret" placeholder="Google api Secret">
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <button type="button" onclick="formSubmit('social_form')" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,4 +160,6 @@
         </section>
         <!-- /.content -->
         @endsection
-        
+        @section('scripts')
+            <script src="{{publicUrl('/pages/settings.js')}}"></script>
+        @endsection

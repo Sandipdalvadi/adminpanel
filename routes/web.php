@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.dashboard.dashboard'); 
     })->name('dashboard');
     Route::get('/settings/form', [App\Http\Controllers\SettingsController::class, 'form'])->name('settings.form');
+    Route::post('/settings/store', [App\Http\Controllers\SettingsController::class, 'store'])->name('settings.store');
 });

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -13,7 +13,12 @@ class SettingsController extends Controller
 
     public function form()
     {
-
+        $settings = Settings::all();
         return view('admin.settings.form');
+    }
+    
+    public function store(Request $request)
+    {   
+        
     }
 }
